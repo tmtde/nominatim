@@ -46,7 +46,7 @@ libbz2 \
 libstdc++ && \
 pip install --no-cache-dir osmium==$OSNIUM_VER && \
 pear channel-update pear.php.net && \
-pear install DB && \
+pear install MDB2 && \
 wget http://www.nominatim.org/release/Nominatim-$NOMINATIM_VER.tar.bz2 && \
 tar xf Nominatim-$NOMINATIM_VER.tar.bz2 && \
 cd Nominatim-$NOMINATIM_VER && \
