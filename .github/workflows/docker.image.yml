@@ -144,18 +144,18 @@ jobs:
         working-directory: .github/workflows
         run: |-
           # get the data from four days ago to make sure there really are updates to apply
-          four_days_ago="$(date --date="4 days ago" +%y%m%d)"
+          four_days_ago="$(date --date='4 days ago' +%y%m%d)"
           docker run -i --rm \
-            -e PBF_URL=http://download.geofabrik.de/europe/monaco-${four_days_ago}.osm.pbf \
-            -e REPLICATION_URL=http://download.geofabrik.de/europe/monaco-updates/ \
+            -e PBF_URL="http://download.geofabrik.de/europe/monaco-${four_days_ago}.osm.pbf" \
+            -e REPLICATION_URL="http://download.geofabrik.de/europe/monaco-updates/" \
             -p 8001:8080 \
-            --name ${{ env.IMAGE_NAME }} \
-            ${{ env.IMAGE_NAME }} &
+            --name "${{ env.IMAGE_NAME }}" \
+            "${{ env.IMAGE_NAME }}" &
           sleep 90
           ./assert-non-empty-json "http://localhost:8001/search.php?q=avenue%20pasteur"
-          docker exec -i ${{ env.IMAGE_NAME }} sudo -u nominatim nominatim replication --project-dir /nominatim --once
+          docker exec -i "${{ env.IMAGE_NAME }}" sudo -u nominatim nominatim replication --project-dir /nominatim --once
           ./assert-non-empty-json "http://localhost:8001/search.php?q=avenue%20pasteur"
-          docker stop ${{ env.IMAGE_NAME }}
+          docker stop "${{ env.IMAGE_NAME }}"
       - name: Scan image with Container Scan
         uses: Azure/container-scan@v0
         env:
