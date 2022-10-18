@@ -54,5 +54,5 @@ mkdir build && \
 cd build && \
 cmake .. && \
 make && \
-wget -q /app/src/data/country_osm_grid.sql.gz https://www.nominatim.org/data/country_grid.sql.gz && \
+wget -q https://www.nominatim.org/data/country_grid.sql.gz -O /app/src/data/country_osm_grid.sql.gz && \
 rm -rf /var/cache/apk/*
