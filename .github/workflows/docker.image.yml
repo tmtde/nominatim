@@ -150,7 +150,7 @@ jobs:
             -e REPLICATION_URL="http://download.geofabrik.de/europe/monaco-updates/" \
             -p 8001:8080 \
             --name "${{ env.IMAGE_NAME }}" \
-            "${{ env.IMAGE_NAME }}" &
+            "localhost:5000/foobar/${{ env.IMAGE_NAME }}" &
           sleep 90
           ./assert-non-empty-json "http://localhost:8001/search.php?q=avenue%20pasteur"
           docker exec -i "${{ env.IMAGE_NAME }}" sudo -u nominatim nominatim replication --project-dir /nominatim --once
