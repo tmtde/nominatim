@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.11
 LABEL maintainer="Timo Lindenblatt <timo.lindenblatt@tmt.de>"
 WORKDIR /app
 RUN apk update && apk add --no-cache \
@@ -12,6 +12,8 @@ bzip2-dev \
 boost-dev \
 postgresql \
 postgresql-dev \
+proj \
+proj-dev \
 py2-pip \
 python-dev \
 php7 \
@@ -22,13 +24,12 @@ php7-pdo_pgsql \
 expat \
 libbz2 \
 libstdc++ && \
-apk add --no-cache --repository "http://dl-4.alpinelinux.org/alpine/edge/testing" proj4 proj4-dev && \
 pip install osmium && \
 pear channel-update pear.php.net && \
 pear install DB && \
 git clone --recursive https://github.com/openstreetmap/Nominatim src && \
 cd src && \
-git -c advice.detachedHead=false checkout tags/v3.3.0 && \
+git -c advice.detachedHead=false checkout tags/v3.5.2 && \
 git submodule update --recursive --init && \
 mkdir build && \
 cd build && \
