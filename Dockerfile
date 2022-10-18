@@ -18,7 +18,7 @@ LABEL maintainer="Timo Lindenblatt <timo.lindenblatt@tmt.de>" \
     org.label-schema.vcs-branch="${VCS_BRANCH:-unknown}"
 
 ENV NOMINATIM_VER 3.5.2
-ENV OSNIUM_VER 3.4.1
+ENV OSNIUM_VER 2.15.4
 WORKDIR /app
 # hadolint ignore=DL3003,DL3018
 RUN apk update && apk add --no-cache \
