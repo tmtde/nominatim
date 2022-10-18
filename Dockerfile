@@ -1,5 +1,6 @@
 FROM alpine:3.11
 LABEL maintainer="Timo Lindenblatt <timo.lindenblatt@tmt.de>"
+ENV NOMINATIM_VER 3.5.2
 WORKDIR /app
 RUN apk update && apk add --no-cache \
 cmake \
@@ -27,10 +28,9 @@ libstdc++ && \
 pip install osmium && \
 pear channel-update pear.php.net && \
 pear install DB && \
-git clone --recursive https://github.com/openstreetmap/Nominatim src && \
-cd src && \
-git -c advice.detachedHead=false checkout tags/v3.5.2 && \
-git submodule update --recursive --init && \
+wget http://www.nominatim.org/release/Nominatim-$NOMINATIM_VER.tar.bz2 && \
+tar xf Nominatim-$NOMINATIM_VER.tar.bz2 && \
+cd Nominatim-$NOMINATIM_VER && \
 mkdir build && \
 cd build && \
 cmake .. && \
