@@ -54,7 +54,7 @@ cd Nominatim-$NOMINATIM_VER && \
 mkdir build && \
 cd build && \
 cmake .. && \
-make && \
+make -j`nproc` && \
 mkdir -p /app/src/data/ && \
 wget -q https://www.nominatim.org/data/country_grid.sql.gz -O /app/src/data/country_osm_grid.sql.gz && \
 rm -rf /var/cache/apk/*
