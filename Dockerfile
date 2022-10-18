@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.16
 
 ARG BUILD_DATE
 ARG BUILD_VERSION
@@ -34,15 +34,16 @@ postgresql \
 postgresql-dev \
 proj \
 proj-dev \
-py2-pip \
-python-dev \
-php7 \
-php7-pear \
-php7-openssl \
-php7-pdo \
-php7-pdo_pgsql \
+py3-pip \
+python3-dev \
+php8 \
+php8-pear \
+php8-openssl \
+php8-pdo \
+php8-pdo_pgsql \
 expat \
 libbz2 \
+icu-data-full \
 libstdc++ && \
 pip install --no-cache-dir osmium==$OSNIUM_VER && \
 pear channel-update pear.php.net && \
