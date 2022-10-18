@@ -20,7 +20,7 @@ LABEL maintainer="Timo Lindenblatt <timo.lindenblatt@tmt.de>" \
 ENV NOMINATIM_VER 3.5.2
 ENV OSNIUM_VER 3.4.1
 WORKDIR /app
-# hadolint ignore=DL3003,DL3018
+# hadolint ignore=SC2086,DL3003,DL3018
 RUN apk update && apk add --no-cache \
 cmake \
 libxml2-dev \
