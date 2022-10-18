@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "04:00"
+    reviewers:
+      - "waja"
+      - "iwyg"
+    pull-request-branch-name:
+      separator: "-"
+    open-pull-requests-limit: 10
+  - package-ecosystem: docker
+    directory: "/"
+    reviewers:
+      - "waja"
+      - "iwyg"
+    schedule:
+      interval: daily
+      time: "04:00"
+    target-branch: "master"
+    ignore:
+      - dependency-name: "php"
+        update-types: ["version-update:semver-major","version-update:semver-minor"]
+    pull-request-branch-name:
+      separator: "-"
+    open-pull-requests-limit: 10
